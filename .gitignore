@@ -1,0 +1,8 @@
+\.idea
+\__pycache__
+\build
+\dist
+\files
+\venv
+Log.txt
+main.spec

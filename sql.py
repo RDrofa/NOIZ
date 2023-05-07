@@ -720,26 +720,27 @@ class SQL():
 
         self.cursor.execute("PRAGMA foreign_keys=OFF")
 
+        b = id.replace(S(id), formName)
+
         for i, itm in enumerate(wells):
 
             a = itm.replace(S(id), formName)
-
-
 
             q = "update history set well = '" + a + "' where well = '" + itm + "'"
             self.cursor.execute(q)
             self.sqlite_conn.commit()
 
-            b =  id.replace(S(id), formName)
-
             q = "update well set ID = '" + a + "', formFK  = '" + b +  "' where ID = '" + itm + "'"
             self.cursor.execute(q)
             self.sqlite_conn.commit()
 
+        q = "update event set form1  = '" + b + "' where form1 = '" + id + "'"
+        self.cursor.execute(q)
+        q = "update event set form2  = '" + b + "' where form2 = '" + id + "'"
+        self.cursor.execute(q)
+        self.sqlite_conn.commit()
+
         self.cursor.execute("PRAGMA foreign_keys=ON")
-
-
-
 
 
     #  ВЫГРУЗКА ИЗ  БАЗЫ ДАННЫХ ДЛЯ КАРТЫ

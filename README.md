@@ -7,28 +7,28 @@
 5. Оптимизация системы поддержания пластового давления (ППД).
 6. Повышение качества подбора скважин-кандидатов для проведения ПГИ, ГТМ, РИР, ОПЗ и регулирование режимов работы скважин.
 
-![main](https://github.com/RDrofa/PALM/blob/master/jpg/main.png?raw=true)
+![main](https://github.com/RDrofa/NOIZ/blob/master/docs/main.png?raw=true)  RDrofa/NOIZ/blob/master/docs/chen.png
 
 **Модуль «Оценка взаимовлияния скважин»**
 * Оценка влияния нагнетательных скважин на добывающие скважины окружения
 * Определение пар скважин с хорошей связью и с отсутствием связи
 
-![spear](https://github.com/RDrofa/PALM/blob/master/jpg/spear.png?raw=true)
+![spear](https://github.com/RDrofa/NOIZ/blob/master/docs/spear.png?raw=true)
 
 **Модуль «Оценка текущих непроизводительных отборов»**
 * Анализ характера обводнения (прорыв ФНВ, конусообразование, НЭК, нормальное вытеснение)
 * Оценка объема непроизводительных отборов (НО)
 * Экономическая оценка потенциала сокращения НО
 
-![chen](https://github.com/RDrofa/PALM/blob/master/jpg/chen.png?raw=true)
-![no](https://github.com/RDrofa/PALM/blob/master/jpg/no.png?raw=true)
+![chen](https://github.com/RDrofa/NOIZ/blob/master/docs/chen.png?raw=true)
+![no](https://github.com/RDrofa/NOIZ/blob/master/docs/no.png?raw=true)
 
 **Модуль «Оценка текущей непроизводительной закачки»**
 * Диагностика работы нагнетательных скважин
 * Выявление изменений эксплуатационных характеристик, скин-фактора вследствие загрязнения ПЗП, ОПЗ, ГРП и других ГТМ, нарушений
 * Оценка доли непроизводительной закачки (НЗ)
 
-![hall](https://github.com/RDrofa/PALM/blob/master/jpg/hall.png?raw=true)
+![hall](https://github.com/RDrofa/NOIZ/blob/master/docs/hall.png?raw=true)
 ## Входные данные
 В качестве основных входных данных используется выгрузка из NGT Smart c данными МЭР и технологических режимов, а также данные свойств пласта. Входные данные загружаются в программу в виде файла Excel со строго определенными наименованиями столбцов. Порядок следования столбцов в файле значения не имеет.
 * Дата

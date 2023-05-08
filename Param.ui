@@ -16,6 +16,10 @@
   <property name="windowTitle">
    <string>Параметры</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>res/oil.ico</normaloff>res/oil.ico</iconset>
+  </property>
   <property name="modal">
    <bool>true</bool>
   </property>

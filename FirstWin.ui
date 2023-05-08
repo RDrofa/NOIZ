@@ -17,11 +17,11 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>PALM</string>
+   <string>NOIZ</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>res/palmtree.ico</normaloff>res/palmtree.ico</iconset>
+    <normaloff>res/oil.ico</normaloff>res/oil.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>

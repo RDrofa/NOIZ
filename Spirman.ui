@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Корреляция по Спирмену</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>res/oil.ico</normaloff>res/oil.ico</iconset>
+  </property>
   <property name="modal">
    <bool>false</bool>
   </property>

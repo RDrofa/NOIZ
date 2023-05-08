@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>График Чена</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>res/oil.ico</normaloff>res/oil.ico</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="1">
     <widget class="QLabel" name="label_dat2">

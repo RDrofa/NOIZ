@@ -23,6 +23,8 @@ from NO_cls import NOwell
 from data_cls import dataform, datawell
 import mat
 import excl
+import gr_map
+import gr1
 
 
 class Spirman(QtWidgets.QDialog):
@@ -2221,8 +2223,12 @@ class First_window(QMainWindow):
 
         #  СОЗДАНИЕ ДЕРЕВА  ОБЪЕКТОВ  В  TREEVIEW
 
-        self.addTree(self.tree_wells, sql.getALLfromBD())
-        self.tree_wells.itemChanged[QTreeWidgetItem, int].connect(self.get_item)
+        if sql.err != '':
+            QtWidgets.QMessageBox.critical(self, "Ошибка", sql.err)
+        else:
+            self.show()
+            self.addTree(self.tree_wells, sql.getALLfromBD())
+            self.tree_wells.itemChanged[QTreeWidgetItem, int].connect(self.get_item)
 
 
     def addTree(self, p, ch):
@@ -2700,6 +2706,7 @@ class First_window(QMainWindow):
 
 
     def load_bd_win(self):
+
 
         bd.show()
         bd.But_load_excel.setEnabled(True)
@@ -5801,11 +5808,10 @@ sql = SQL()
 edit = Edit()
 edit2 = Edit2()
 edit3 = Edit3()
-first_window=First_window()
 evt = EVT()
 bd = BD()
 spirman = Spirman()
-first_window.show()
+first_window=First_window()
 
 
 

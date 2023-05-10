@@ -7,15 +7,35 @@ from mat import getFormName as F
 from mat import getPlaceName as Place
 from dateutil.relativedelta import *
 from datetime import datetime
+import os.path
 
 
 class SQL():
 
     def __init__(self):
-        super(SQL, self).__init__()
-        self.connectBD()
+        #super(SQL, self).__init__()
+        pathh = ''
+        self.err = ''
+        if os.path.isfile('../data.db'):
+            pathh = ('../data.db')
+        elif os.path.isfile('data.db'):
+            pathh = ('data.db')
+        else:
+            pass
 
-        self.createTableChenParam()
+        if pathh != '':
+            try:
+                self.connectBD(pathh)
+                self.createTableChenParam()
+            except sqlite3.Error as error:
+                self.err = str(error)
+            #finally:
+                # if (sqlite_connection):
+                #   sqlite_connection.close()
+                #   print("Соединение с SQLite закрыто")
+                #pass
+        else:
+            self.err = 'Файл базы данных data.db не найден'
 
 
     def createTableChenParam(self):
@@ -199,29 +219,19 @@ class SQL():
         d[x] = pd.to_datetime(d[x], format="%Y/%m/%d")
         return d
 
-    def connectBD(self):
-        try:
-            #appdir = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(__file__)))
-            #self.sqlite_conn = sqlite3.connect(os.path.join(appdir, 'data.db'))
-            self.sqlite_conn = sqlite3.connect('data.db')
-            self.cursor = self.sqlite_conn.cursor()
-            self.cursor.execute("PRAGMA foreign_keys=ON")
+    def connectBD(self, pathh):
 
-            #q = """CREATE TABLE IF NOT EXISTS alldates (dat TEXT); """
-            #self.cursor.executescript(q)
+        #appdir = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(__file__)))
+        #self.sqlite_conn = sqlite3.connect(os.path.join(appdir, 'data.db'))
+        self.sqlite_conn = sqlite3.connect(pathh)
+        self.cursor = self.sqlite_conn.cursor()
+        self.cursor.execute("PRAGMA foreign_keys=ON")
 
+        #q = """CREATE TABLE IF NOT EXISTS alldates (dat TEXT); """
+        #self.cursor.executescript(q)
 
-            print("База данных создана и успешно подключена к SQLite")
-            #self.getALLfromBD()
-            
-
-        except sqlite3.Error as error:
-            print("Ошибка при подключении к sqlite", error)
-        finally:
-            #if (sqlite_connection):
-             #   sqlite_connection.close()
-             #   print("Соединение с SQLite закрыто")
-             pass
+        print("База данных создана и успешно подключена к SQLite")
+        #self.getALLfromBD()
 
 
     def closBD(self):

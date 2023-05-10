@@ -3,7 +3,7 @@ import matplotlib
 matplotlib.rcParams.update({'font.size': 6})
 
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
-import mplcursors
+#import mplcursors
 from matplotlib.figure import Figure
 
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavTool
@@ -52,7 +52,7 @@ class Gr1(QWidget):
         self.canvas.axes = self.canvas.figure.add_subplot()
 
 
-        mplcursors.cursor(hover=True)
+        #mplcursors.cursor(hover=True)
 
 
         self.setLayout(vertical_layout)

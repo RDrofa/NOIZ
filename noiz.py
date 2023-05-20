@@ -4617,10 +4617,16 @@ class Hall_window(QtWidgets.QDialog):
                     y1 = N.yyy[i][len(N.yyy[i]) - 1]
                     x2 = x1
                     y2 = y1 - y1 / 2
-                    try:
-                        texxt = N.source_df['Дата'][Ndat - 1]
-                    except:
-                        texxt ='??????????????'
+
+                    texxt = ''
+                    x = 1
+                    while texxt == '':
+                        try:
+                            texxt = N.source_df['Дата'][Ndat - x]
+                        except:
+                            x = x + 1
+                            if x > len(N.source_df):
+                                texxt = '??????????????'
 
                         # !!! Добавление аннотации
                     arr = self.Gr_hall1.canvas.axes.annotate(str(texxt)[:7],xy=(x1, y1),xytext=(x2, y2),arrowprops={'arrowstyle': '->'})

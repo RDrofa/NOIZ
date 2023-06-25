@@ -3519,6 +3519,7 @@ class First_window(QMainWindow):
         R = []
         h = []
         re = []
+        coord = []
 
         for i in range(len(self.all_checked)):
             if 'НАГ' in self.all_checked[i]:
@@ -3527,6 +3528,8 @@ class First_window(QMainWindow):
                 R.append(self.R[i])
                 h.append(self.h[i])
                 re.append(self.re[i])
+                coord.append([self.X1[i], self.Y1[i], self.X2[i], self.Y2[i]])
+
         hall_window.allWell = l
         hall_window.forms = f
         hall_window.R = R
@@ -3534,6 +3537,7 @@ class First_window(QMainWindow):
         hall_window.re = re
         hall_window.minHall = param.Edit_minHall.text()
         hall_window.rdp = param.Edit_rdp.text()
+        hall_window.coord = coord
         hall_window.show()
         hall_window.doHall()
 
@@ -4414,6 +4418,7 @@ class Hall_window(QtWidgets.QDialog):
         super(Hall_window, self).__init__()
         loadUi("Hall.ui", self)
         self.allWell = []
+        self.coord = []
         self.forms = []
         self.h = []
         self.R = []
@@ -4580,7 +4585,7 @@ class Hall_window(QtWidgets.QDialog):
                 bw, mu, kw = sql.getFormPar(self.forms[i])
                 df_gtm = sql.getEVTfromBDforAll(mat.getSkvNfromText(self.allWell[i]), self.forms[i], 'НАГ')
 
-                a = hallwell(df, df_gtm, self.forms[i], self.allWell[i], self.h[i], self.R[i], self.re[i], self.rdp, self.minHall, True,  bw, mu, kw)
+                a = hallwell(df, df_gtm, self.forms[i], self.allWell[i], self.h[i], self.R[i], self.re[i], self.rdp, self.minHall, True,  bw, mu, kw, self.coord[i])
 
 
                 self.ListOfHallObj.append(a)

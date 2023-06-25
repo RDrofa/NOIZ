@@ -4,7 +4,7 @@ from rdp import rdp
 import math
 
 
-def for_well(df, value_rdp, mass_val_par, el, res, KRS, RIR, frcst, TR):
+def for_well(df, value_rdp, mass_val_par, el, res, KRS, RIR, frcst, TR, L):
     
          
     #mass_val_par = [1.174,0.4,0.8,2.266666667,200,0.09144] 
@@ -27,6 +27,8 @@ def for_well(df, value_rdp, mass_val_par, el, res, KRS, RIR, frcst, TR):
     global badVal
     global forecast
     global payback
+    global Len
+    Len = L
 
     sum_W, mass_sum_deltaP_t,xxx,yyy,xx,tg,yy,global_arr_depress,global_arr_days,global_arr_w,global_arr_real_date,tg_two_point, TR_cut = Hallplot(df, value_rdp, TR)
 
@@ -96,7 +98,7 @@ def for_well(df, value_rdp, mass_val_par, el, res, KRS, RIR, frcst, TR):
         df_result['Закачка (МЭР)'] =np.array(tmp_frame4).T
         df_result['Скин'] =np.array(tmp_frame5).T
         df_result['Суммарная НЗ за период'] =np.array(tmp_frame6).T
-#   
+
 #            df_tmp = pd.merge(df1, df_result, how ='inner', on ='Дата')
             
         #df_result.to_excel('Отчеты\Скв ' + str(NameNag)+'_график Холла.xlsx')
@@ -272,7 +274,21 @@ def Q_from_old_skin(depress,skin,arr_par,time):
     q,Q = [],[]
         
     for i in range (0, len(depress)):
-        q.append((arr_par[2]*arr_par[3]*depress[i])/(18.41*arr_par[1]*arr_par[0]*(math.log(arr_par[-2]/arr_par[-1])+skin)))
+        if Len == 0:
+
+            I = (arr_par[2]*arr_par[3]*depress[i])/(18.41*arr_par[1]*arr_par[0]*(math.log(arr_par[-2]/arr_par[-1])+skin))
+
+        else:
+            tmp = ((2*arr_par[-2]/Len)**4 + 0.25)**0.5
+            tmp = (tmp + 0.5)**0.5
+            a = tmp * Len / 2
+            tmp = a**2 - (Len/2)**2
+            tmp = tmp**0.5 + a
+            tmp = math.log(tmp / (Len/2))
+            tmp = tmp + arr_par[3] / Len * math.log(arr_par[3] / (2*arr_par[-1])) + skin
+            I = (arr_par[2]*arr_par[3]*depress[i])/ (18.41*arr_par[1]*arr_par[0]*tmp)
+
+        q.append(I)
         Q.append(q[i]*time[i])
 
     return (Q)
@@ -286,7 +302,7 @@ def Q_from_old_skin(depress,skin,arr_par,time):
 
 
 def Main_skin(skin,arr_par,global_arr_depress,global_arr_days,global_arr_w):
-        
+
         
     Q_ = []
     Q_DAY10 =[]

@@ -436,7 +436,7 @@
             <widget class="QPushButton" name="But_chenCalc">
              <property name="minimumSize">
               <size>
-               <width>160</width>
+               <width>166</width>
                <height>0</height>
               </size>
              </property>
@@ -453,6 +453,12 @@
            </item>
            <item>
             <widget class="QPushButton" name="But_open_chen">
+             <property name="minimumSize">
+              <size>
+               <width>134</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="text">
               <string>Открыть отчет по Чену</string>
              </property>

@@ -900,7 +900,7 @@ class BD(QtWidgets.QDialog):
     def __init__(self):
         super(BD, self).__init__()
         loadUi("bd.ui", self)
-        logging.basicConfig(filename="BDlog.txt", level=logging.INFO)
+        #logging.basicConfig(filename = mat.path2 + "\\BDlog.txt", level=logging.INFO)
 
         validator = QtGui.QRegExpValidator(QRegExp("([-]{0,1})([0-9]{0,9})([.]{0,1}[0-9]{0,100})"))
         self.Edit_Bw.setValidator(validator)
@@ -2140,7 +2140,7 @@ class First_window(QMainWindow):
         self.But_rep.clicked.connect(self.doReportAll)
         self.But_home.clicked.connect(self.doGrHome)
 
-        logging.basicConfig(filename="Log.txt", level=logging.INFO)
+        logging.basicConfig(filename = mat.path2 + "\\Log.txt", level=logging.INFO)
 
         self.all_checked = []
         self.all_tree_itm_checked = []
@@ -2164,6 +2164,7 @@ class First_window(QMainWindow):
         #self.action_4.triggered.connect(self.load_grp)
         self.action_8.triggered.connect(self.load_evt)
         self.action_9.triggered.connect(self.load_word)
+        self.action_10.triggered.connect(self.open_folder)
         self.action_chen.triggered.connect(self.load_chen2)
         self.action_hall.triggered.connect(self.load_hall2)
         self.action_no.triggered.connect(self.load_no)
@@ -2229,7 +2230,6 @@ class First_window(QMainWindow):
             self.show()
             self.addTree(self.tree_wells, sql.getALLfromBD())
             self.tree_wells.itemChanged[QTreeWidgetItem, int].connect(self.get_item)
-
 
     def addTree(self, p, ch):
 
@@ -2415,6 +2415,9 @@ class First_window(QMainWindow):
 
                 #menu.addAction(all2)
                 menu.exec_(self.tree_wells.viewport().mapToGlobal(position))
+
+    def open_folder(self):
+        excl.openf()
 
     def load_wellEdit(self):
 
@@ -4267,7 +4270,7 @@ class EVT(QtWidgets.QDialog):
         try:
 
             try:
-                f = open('gtm.txt', 'r')
+                f = open(mat.path2 + '\\gtm.txt', 'r')
                 data = f.read()
                 f.close()
                 mat.dict_gtm = eval(data)
@@ -4314,12 +4317,6 @@ class EVT(QtWidgets.QDialog):
             self.But_del_gtm_all.setEnabled(False)
 
 
-
-
-
-
-
-
         except Exception as e:
 
             QtWidgets.QMessageBox.critical(self, "Ошибка", "Файл Excel не корректный")
@@ -4364,7 +4361,7 @@ class EVT(QtWidgets.QDialog):
                 mat.dict_gtm[s].append(key)
 
 
-        f = open('gtm.txt', 'w')
+        f = open(mat.path2 + '\\gtm.txt', 'w')
         f.write(str(mat.dict_gtm))
         f.close()
 
@@ -5359,7 +5356,7 @@ class NO(QtWidgets.QDialog):
         self.tableNO.setColumnWidth(2, 60)
 
         self.tableNO.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
-        self.tableNO.horizontalHeader().setStyleSheet("QHeaderView { font-size: 9pt; font-weight: bold}")
+        self.tableNO.horizontalHeader().setStyleSheet("QHeaderView { font-size: 7pt; font-weight: bold}")
 
         self.tableNO.setHorizontalHeaderItem(6, QTableWidgetItem('Сокращение дебита \n воды (прогноз qн), \n т/сут'))
         self.tableNO.setHorizontalHeaderItem(7, QTableWidgetItem('Текущий НО воды \n (прогноз qн), \n т'))

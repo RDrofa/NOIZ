@@ -3,24 +3,26 @@ import pandas as pd
 import  numpy  as  np
 from mat import getSkvNfromText as S
 from mat import getFormName as F
-from mat import getFormName as F
 from mat import getPlaceName as Place
 from dateutil.relativedelta import *
 from datetime import datetime
 import os.path
+import shutil
+import mat
 
 
 class SQL():
 
     def __init__(self):
-        #super(SQL, self).__init__()
-        pathh = ''
+
         self.err = ''
+        '''pathh = ''
         if os.path.isfile('../data.db'):
             pathh = ('../data.db')
         elif os.path.isfile('data.db'):
             pathh = ('data.db')
         else:
+            pathh = ('data.db')
             pass
 
         if pathh != '':
@@ -35,7 +37,25 @@ class SQL():
                 #   print("Соединение с SQLite закрыто")
                 #pass
         else:
-            self.err = 'Файл базы данных data.db не найден'
+            self.err = 'Файл базы данных data.db не найден'''''
+
+        try:
+            mat.path1 = 'C:\\Users\\' + os.environ["UserName"] + '\\AppData\\Roaming\\NOIZ\\Отчеты'
+            mat.path2 = 'C:\\Users\\' + os.environ["UserName"] + '\\AppData\\Roaming\\NOIZ'
+            os.makedirs(mat.path1, exist_ok=True)
+            if os.path.exists(mat.path2 + '\\data.db'):
+                pass
+            else:
+                shutil.copy2('data.db', mat.path2)
+
+
+
+            self.connectBD(mat.path2 + '\\data.db')
+            self.createTableChenParam()
+        except sqlite3.Error as error:
+            self.err = str(error)
+
+
 
 
     def createTableChenParam(self):

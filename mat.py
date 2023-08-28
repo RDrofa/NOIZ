@@ -79,6 +79,11 @@ HTM2 = HTM2  + '</body>'
 HTM2 = HTM2  + '</html>'
 
 
+# ближайшее число к заданному
+
+def nearest(lst, target):
+  return min(lst, key=lambda x: abs(x-target))
+
 
 # Получение списка пластов
 def getAllForms(plast0):

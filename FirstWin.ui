@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1912</width>
-    <height>1030</height>
+    <width>1917</width>
+    <height>1049</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -612,8 +612,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1912</width>
-     <height>22</height>
+     <width>1917</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -627,6 +627,7 @@
     <addaction name="action_chen"/>
     <addaction name="action_no"/>
     <addaction name="separator"/>
+    <addaction name="action_10"/>
     <addaction name="action"/>
    </widget>
    <widget class="QMenu" name="menu_2">
@@ -721,6 +722,11 @@
    </property>
    <property name="text">
     <string>Метод Холла</string>
+   </property>
+  </action>
+  <action name="action_10">
+   <property name="text">
+    <string>Открыть папку приложения</string>
    </property>
   </action>
  </widget>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1304</width>
-    <height>745</height>
+    <width>1456</width>
+    <height>824</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -78,7 +78,7 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>200</width>
+             <width>220</width>
              <height>16777215</height>
             </size>
            </property>
@@ -91,9 +91,9 @@
            <widget class="QWidget" name="formLayoutWidget">
             <property name="geometry">
              <rect>
-              <x>10</x>
+              <x>0</x>
               <y>10</y>
-              <width>281</width>
+              <width>301</width>
               <height>311</height>
              </rect>
             </property>
@@ -327,6 +327,7 @@ selection-color: #000;
           </property>
           <property name="font">
            <font>
+            <pointsize>7</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -338,6 +339,7 @@ selection-color: #000;
           </property>
           <property name="font">
            <font>
+            <pointsize>7</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -349,6 +351,7 @@ selection-color: #000;
           </property>
           <property name="font">
            <font>
+            <pointsize>7</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -360,6 +363,7 @@ selection-color: #000;
           </property>
           <property name="font">
            <font>
+            <pointsize>7</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -371,6 +375,7 @@ selection-color: #000;
           </property>
           <property name="font">
            <font>
+            <pointsize>7</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -382,6 +387,7 @@ selection-color: #000;
           </property>
           <property name="font">
            <font>
+            <pointsize>7</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -393,6 +399,7 @@ selection-color: #000;
           </property>
           <property name="font">
            <font>
+            <pointsize>7</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -407,6 +414,7 @@ selection-color: #000;
           </property>
           <property name="font">
            <font>
+            <pointsize>7</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -418,6 +426,7 @@ selection-color: #000;
           </property>
           <property name="font">
            <font>
+            <pointsize>7</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -429,6 +438,7 @@ selection-color: #000;
           </property>
           <property name="font">
            <font>
+            <pointsize>7</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -440,6 +450,7 @@ selection-color: #000;
           </property>
           <property name="font">
            <font>
+            <pointsize>7</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>

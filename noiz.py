@@ -298,38 +298,38 @@ class Spirman(QtWidgets.QDialog):
        # if self.Gr_spir.toolbar.mode== 'pan/zoom' or :
 
 
-        #try:
+        try:
 
-        if self.But_vertlines.isChecked():
+            if self.But_vertlines.isChecked():
 
-            if event.button == 1:
-                if event.xdata<self.currVertRight:
-                    self.currVertLeft = int(event.xdata)
-                    D = str(mdates.num2date(self.currVertLeft))[:7]
-                    n = mat.getNumOfDate(self.ListOfSpirmanObj[self.N].source_df['D'].tolist(), D)
-                    self.ListOfSpirmanObj[self.N].range_start = n
-                    self.ListOfSpirmanObj[self.N].checkRange()
-                    self.grVertLines(self.ListOfSpirmanObj[self.N].range_start_D, -2)
-                    self.changeColor(self.ListOfSpirmanObj[self.N].right_range)
-                    self.doSpearText()
-                    self.comboDat1.setCurrentIndex(n)
+                if event.button == 1:
+                    if event.xdata<self.currVertRight:
+                        self.currVertLeft = int(event.xdata)
+                        D = str(mdates.num2date(self.currVertLeft))[:7]
+                        n = mat.getNumOfDate(self.ListOfSpirmanObj[self.N].source_df['D'].tolist(), D)
+                        self.ListOfSpirmanObj[self.N].range_start = n
+                        self.ListOfSpirmanObj[self.N].checkRange()
+                        self.grVertLines(self.ListOfSpirmanObj[self.N].range_start_D, -2)
+                        self.changeColor(self.ListOfSpirmanObj[self.N].right_range)
+                        self.doSpearText()
+                        self.comboDat1.setCurrentIndex(n)
 
-            elif event.button == 3:
-                if event.xdata > self.currVertLeft:
-                    self.currVertRight = int(event.xdata)
-                    D = str(mdates.num2date( self.currVertRight))[:7]
-                    n = mat.getNumOfDate(self.ListOfSpirmanObj[self.N].source_df['D'].tolist(), D)
-                    self.ListOfSpirmanObj[self.N].range_fin = n
-                    self.ListOfSpirmanObj[self.N].checkRange()
-                    self.grVertLines(-2, self.ListOfSpirmanObj[self.N].range_fin_D)
-                    self.changeColor(self.ListOfSpirmanObj[self.N].right_range)
-                    self.doSpearText()
-                    self.comboDat2.setCurrentIndex(n)
-            else:
-                pass
+                elif event.button == 3:
+                    if event.xdata > self.currVertLeft:
+                        self.currVertRight = int(event.xdata)
+                        D = str(mdates.num2date( self.currVertRight))[:7]
+                        n = mat.getNumOfDate(self.ListOfSpirmanObj[self.N].source_df['D'].tolist(), D)
+                        self.ListOfSpirmanObj[self.N].range_fin = n
+                        self.ListOfSpirmanObj[self.N].checkRange()
+                        self.grVertLines(-2, self.ListOfSpirmanObj[self.N].range_fin_D)
+                        self.changeColor(self.ListOfSpirmanObj[self.N].right_range)
+                        self.doSpearText()
+                        self.comboDat2.setCurrentIndex(n)
+                else:
+                    pass
 
-        #except:
-        #    print('???????????????????????')
+        except:
+            print('???????????????????????')
 
 
 
@@ -5369,6 +5369,44 @@ class NO(QtWidgets.QDialog):
         self.But_NOCalc.clicked.connect(self.saveNO)
         self.But_open_NO.clicked.connect(self.doRepNO)
 
+        self.cid = self.Gr_NO.canvas.mpl_connect('button_release_event', self.onclick_to_Gr_NO)
+
+
+    def onclick_to_Gr_NO(self, event):
+        n = self.listWidget.currentRow()
+
+        m = self.ListOfNoObj[n].slice["Накопленная добыча нефти, тыс.т"].tolist()
+        print(m)
+
+        print(mat.nearest(m, event.xdata))
+
+        '''if event.button == 1:
+            if event.xdata<self.currVertRight:
+                self.currVertLeft = int(event.xdata)
+                D = str(mdates.num2date(self.currVertLeft))[:7]
+                n = mat.getNumOfDate(self.ListOfSpirmanObj[self.N].source_df['D'].tolist(), D)
+                self.ListOfSpirmanObj[self.N].range_start = n
+                self.ListOfSpirmanObj[self.N].checkRange()
+                self.grVertLines(self.ListOfSpirmanObj[self.N].range_start_D, -2)
+                self.changeColor(self.ListOfSpirmanObj[self.N].right_range)
+                self.doSpearText()
+                self.comboDat1.setCurrentIndex(n)
+
+        elif event.button == 3:
+            if event.xdata > self.currVertLeft:
+                self.currVertRight = int(event.xdata)
+                D = str(mdates.num2date( self.currVertRight))[:7]
+                n = mat.getNumOfDate(self.ListOfSpirmanObj[self.N].source_df['D'].tolist(), D)
+                self.ListOfSpirmanObj[self.N].range_fin = n
+                self.ListOfSpirmanObj[self.N].checkRange()
+                self.grVertLines(-2, self.ListOfSpirmanObj[self.N].range_fin_D)
+                self.changeColor(self.ListOfSpirmanObj[self.N].right_range)
+                self.doSpearText()
+                self.comboDat2.setCurrentIndex(n)
+        else:
+            pass'''
+
+
 
     def doRepNO(self):
 
@@ -5539,8 +5577,6 @@ class NO(QtWidgets.QDialog):
         self.tableNO.setColumnWidth(18, 90)
 
 
-
-
     def refresh(self):
         n = self.listWidget.currentRow()
 
@@ -5553,7 +5589,6 @@ class NO(QtWidgets.QDialog):
         self.ListOfNoObj[n].doCalc()
         self.fillTable(n)
         self.doGrNO(n)
-
 
 
     def listWidgetClick(self):

@@ -1,10 +1,14 @@
 import xlsxwriter
 from mat import spearDecodeK as SD
 import subprocess
+import mat
+
+def openf():
+    subprocess.Popen(r'explorer /open, ' + mat.path2)
 
 
 def setExcelReportNO(data):
-    workbook = xlsxwriter.Workbook('Отчеты\Отчет_НО.xlsx')
+    workbook = xlsxwriter.Workbook(mat.path1 + '\\Отчет_НО.xlsx')
     worksheet = workbook.add_worksheet()
 
     title_format = workbook.add_format(
@@ -74,7 +78,7 @@ def setExcelReportNO(data):
     worksheet.freeze_panes(1, 0)
 
     workbook.close()
-    subprocess.Popen("Отчеты\Отчет_НО.xlsx", shell=True)
+    subprocess.Popen(mat.path1 + "\\Отчет_НО.xlsx", shell=True)
 
 
 
@@ -84,7 +88,7 @@ def setExcelReportNO(data):
 
 def setExcelReportChen(data):
 
-    workbook = xlsxwriter.Workbook('Отчеты\Отчет_Чен.xlsx')
+    workbook = xlsxwriter.Workbook(mat.path1 + '\\Отчет_Чен.xlsx')
     worksheet = workbook.add_worksheet()
 
     title_format = workbook.add_format(
@@ -134,7 +138,7 @@ def setExcelReportChen(data):
     worksheet.freeze_panes(1, 0)
 
     workbook.close()
-    subprocess.Popen("Отчеты\Отчет_Чен.xlsx", shell=True)
+    subprocess.Popen(mat.path1 + '\\Отчет_Чен.xlsx', shell=True)
 
 
 
@@ -145,7 +149,7 @@ def setExcelReportChen(data):
 def setExcelReportSpear(data):
 
 
-    workbook = xlsxwriter.Workbook('Отчеты\Отчет_Спирмен.xlsx')
+    workbook = xlsxwriter.Workbook(mat.path1 + '\\Отчет_Спирмен.xlsx')
     worksheet = workbook.add_worksheet()
 
     title_format = workbook.add_format(
@@ -224,7 +228,7 @@ def setExcelReportSpear(data):
     worksheet.freeze_panes(1, 0)
 
     workbook.close()
-    subprocess.Popen("Отчеты\Отчет_Спирмен.xlsx", shell=True)
+    subprocess.Popen(mat.path1 + "\\Отчет_Спирмен.xlsx", shell=True)
 
 
 
@@ -233,7 +237,7 @@ def setExcelReportSpear(data):
 
 def setExcelReportAll(data, no):
 
-    workbook = xlsxwriter.Workbook('Отчеты\Общий_отчет.xlsx')
+    workbook = xlsxwriter.Workbook(mat.path1 + '\\Общий_отчет.xlsx')
     worksheet = workbook.add_worksheet()
 
     title_format = workbook.add_format(
@@ -395,7 +399,7 @@ def setExcelReportAll(data, no):
     worksheet.freeze_panes(1, 0)
     workbook.close()
 
-    subprocess.Popen("Отчеты\Общий_отчет.xlsx", shell=True)
+    subprocess.Popen(mat.path1 + '\\Общий_отчет.xlsx', shell=True)
 
 
 
@@ -406,7 +410,7 @@ def setExcelReport(L, nag, cols, D1, D2, K, oneLag):
     try:
 
         # Create an new Excel file and add a worksheet.
-        workbook = xlsxwriter.Workbook('Отчеты\Spearman_'+str(nag)+'.xlsx')
+        workbook = xlsxwriter.Workbook(mat.path1 + '\\Spearman_'+str(nag)+'.xlsx')
         worksheet = workbook.add_worksheet()
 
         worksheet.set_column('C:C', 11)

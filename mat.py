@@ -1,5 +1,8 @@
 import math
 
+path1 =''
+path2 = ''
+
 
 dict_gtm = {  'ВПП':[],
               'Дострел':[],
